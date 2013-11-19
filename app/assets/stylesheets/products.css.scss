@@ -1,0 +1,282 @@
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    white;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    white;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    white;
+}
+
+/* line 18, ../../app/assets/stylesheets/products.css.scss */
+.step {
+  margin-bottom: 10px;
+}
+
+/* line 23, ../../app/assets/stylesheets/products.css.scss */
+#step-1 {
+  background-position: center 0;
+  height: 53px;
+}
+
+@media all and (min-width: 320px) {
+  /* line 29, ../../app/assets/stylesheets/products.css.scss */
+  #step-1 {
+    width: 328px;
+  }
+}
+@media all and (max-width: 320px) {
+  /* line 35, ../../app/assets/stylesheets/products.css.scss */
+  #step-1 {
+    width: 90%;
+    background-size: 100%;
+  }
+}
+/* line 41, ../../app/assets/stylesheets/products.css.scss */
+
+/* line 46, ../../app/assets/stylesheets/products.css.scss */
+#buy-now {
+  margin-top: 10px;
+  padding: 14px 0 14px 0;
+  background: #3e3e3e;
+  color: #fff;
+  font-size: 23px;
+  line-height: 25px;
+  width: 100%;
+
+}
+/* line 56, ../../app/assets/stylesheets/products.css.scss */
+#buy-now .full-price {
+  float: right;
+}
+/* line 57, ../../app/assets/stylesheets/products.css.scss */
+#buy-now .price {
+  font-weight: bold;
+}
+
+/* line 60, ../../app/assets/stylesheets/products.css.scss */
+.right-white {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  height: 44px;
+  width: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  background: #fff;
+  border-top: 1px solid #3e3e3e;
+}
+
+/* line 72, ../../app/assets/stylesheets/products.css.scss */
+.right-grey {
+  position: absolute;
+  right: 0;
+  top: -1px;
+  height: 44px;
+  width: 50%;
+  overflow: hidden;
+  background: #414141;
+  border-top: 1px solid black;
+}
+
+/* line 82, ../../app/assets/stylesheets/products.css.scss */
+#learn-more {
+  position: relative;
+  margin-top: -20px;
+  padding: 14px 20px 12px 20px;
+  background: #414141;
+  border-top: 1px solid black;
+  float: right;
+  border-bottom-left-radius: 4px;
+  height: 18px;
+  overflow: hidden;
+  margin-right: -5.7%;
+}
+/* line 92, ../../app/assets/stylesheets/products.css.scss */
+#learn-more a {
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#credit-card .form-row #user_credit_card_expiration,
+#credit-card .form-row #user_credit_card_cvv
+{
+    padding:0px;
+}
+
+/* line 99, ../../app/assets/stylesheets/products.css.scss */
+#credit-cards {
+  position: relative;
+  margin-top: 20px;
+  background: url(credit-cards.png) no-repeat;
+  width: 237px;
+  height: 42px;
+}
+
+@media all and (min-width: 450px) {
+  /* line 108, ../../app/assets/stylesheets/products.css.scss */
+  #credit-cards {
+    width: 327px;
+  }
+}
+@media all and (max-width: 450px) {
+  /* line 114, ../../app/assets/stylesheets/products.css.scss */
+  #credit-cards {
+    width: 45%;
+    background-size: 100%;
+  }
+}
+/* line 123, ../../app/assets/stylesheets/products.css.scss */
+#credit-card #credit-card-errors {
+  padding: 2%;
+  font-size: 16px;
+  color: #ff1521;
+}
+/* line 129, ../../app/assets/stylesheets/products.css.scss */
+#credit-card .form-row {
+  border: none;
+}
+/* line 133, ../../app/assets/stylesheets/products.css.scss */
+#credit-card label {
+  font-size: 14px;
+    color: #c0d6df;
+    float: left;
+    margin-right: 10px;
+    line-height: 11px;
+}
+@media all and (min-width: 500px) {
+  /* line 141, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card input {
+    font-size: 28px;
+  }
+  /* line 144, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card .labeled input {
+    font-size: 28px;
+  }
+}
+@media all and (min-width: 380px) and (max-width: 500px) {
+  /* line 150, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card input {
+    font-size: 28px;
+  }
+  /* line 153, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card .labeled input {
+    font-size: 22px;
+  }
+}
+@media all and (max-width: 380px) {
+  /* line 159, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card input {
+    font-size: 20px;
+  }
+  /* line 162, ../../app/assets/stylesheets/products.css.scss */
+  #credit-card .labeled input {
+    font-size: 16px;
+    line-height: 40px;
+  }
+}  
+/* line 169, ../../app/assets/stylesheets/products.css.scss */
+#is_billing_info {
+  position: relative;
+  padding: 5px 0 5px 25px;
+  margin: 0;
+}
+/* line 174, ../../app/assets/stylesheets/products.css.scss */
+#is_billing_info input[type=checkbox] {
+  position: absolute;
+  left: 0;
+  top: 25%;
+}
+
+/* line 183, ../../app/assets/stylesheets/products.css.scss */
+label {
+  color: #b6b6b6;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* line 189, ../../app/assets/stylesheets/products.css.scss */
+.error, .field_with_errors {
+  background: transparent;
+}
+/* line 191, ../../app/assets/stylesheets/products.css.scss */
+.error input, .error select, .error textarea, .field_with_errors input, .field_with_errors select, .field_with_errors textarea {
+  background: #ffb1b2 !important;
+}
+
+/* line 193, ../../app/assets/stylesheets/products.css.scss */
+.form-row {
+  position: relative;
+  width: 99%;
+  margin: 10px 0;
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+}
+/* line 201, ../../app/assets/stylesheets/products.css.scss */
+.form-row input, .form-row select, .form-row textarea {
+  background: transparent;
+  float: left;
+  width: 95%;
+  border: none;
+  color: #666;
+  font-size: 18px;
+  margin: 0;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+}
+/* line 215, ../../app/assets/stylesheets/products.css.scss */
+.form-row .labeled input {
+  width: 65%;
+}
+/* line 221, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col {
+  padding: 4px 2%;
+  position: relative;
+  float: left;
+}
+/* line 228, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col.right {
+  margin-left: -1px;
+  border-left: 1px solid #d6d6d6;
+}
+/* line 233, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col.one {
+  width: 96%;
+}
+/* line 237, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col.medium {
+  width: 65%;
+}
+/* line 241, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col.small {
+  width: 25%;
+}
+/* line 245, ../../app/assets/stylesheets/products.css.scss */
+.form-row .form-col.half {
+  width: 46%;
+}
+
+/* line 253, ../../app/assets/stylesheets/products.css.scss */
+#submit-order-area input[type=submit] {
+  border-radius: 4px;
+  width: 200px;
+  color: #999999;
+  text-align: center;
+  padding: 20px 20px;
+  border: 1px solid #b6b6b6;
+  background: #f1f1f1;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 18px;
+
+}
+
+/* line 263, ../../app/assets/stylesheets/products.css.scss */
+#submit-order-area {
+  margin: 25px 0 25px 0;
+}

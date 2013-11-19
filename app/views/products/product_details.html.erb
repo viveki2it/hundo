@@ -1,0 +1,34 @@
+<div class="well">
+  <h4>Product Details</h4>
+  <table>
+    <tr>
+      <td>Internal Name:</td>
+      <td><%= @product.product_internal_name %></td>
+    </tr>
+    <tr>
+      <td>External Name</td>
+      <td><%= @product.product_external_name %></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><%= @product.product_description %></td>
+    </tr>
+    <% unless @product.one_eight_hundred_number.blank? %>
+      <tr>
+        <td>1-800 number:</td>
+        <td><%= @product.one_eight_hundred_number %></td>
+      </tr>
+    <% end %>
+  </table>
+  <h4>Images</h4>
+  <ul class="thumbnails">
+    <% @product.images.each do |product_image|   %>
+      <li class="span">
+        <div class="thumbnail">
+          <%= image_tag(product_image.image(:thumb), :class=>"img-polaroid") %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+

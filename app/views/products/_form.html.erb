@@ -1,0 +1,193 @@
+<div id="space" style="margin-top: 130px"></div>
+<div id="product_create" style="padding-left: 270px;padding-bottom: 30px; padding-top: 20px; background:url(http://i.imgur.com/HxfzGsQ.png);-webkit-border-radius: 10px; 
+     border-radius: 10px;">
+     <%= form_for(@product, :url => {:action => @product.new_record? ? "create" : "update" } , :html => { :method => @product.new_record? ? "post" : "put" }, :remote => true) do |f| %>
+    <h2>Product Details</h2>
+    <table id="product_create_details">
+      <tr>
+        <td>
+          <%= f.text_field :product_internal_name, :placeholder => "Product internal name" %>
+        </td>
+        <td><%= validation_error(@product.errors["product_internal_name"]) %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :product_external_name, :placeholder => "Product external name" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_area :product_description, :cols => "25", :rows => "5", :placeholder => "Product description" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :sku, :placeholder => "SKU(Stock Keeping Unit)" %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :shipping_and_handling, :placeholder => "ShippingAndHandling Cost" %>
+        </td>
+        <td><%= validation_error(@product.errors["shipping_and_handling"]) %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :product_cost, :placeholder => "Product Cost" %>
+        </td>
+        <td><%= validation_error(@product.errors["product_cost"]) %></td>
+      </tr>
+      <tr>
+        <td>
+          <%= f.text_field :unit_price, :placeholder => "How much does it cost?", :readOnly => true %>
+        </td>
+        <td><%= validation_error(@product.errors["unit_price"]) %></td>
+      </tr>
+      <script type="text/javascript">
+
+       
+
+      </script>
+
+      <% unless current_client.products.nil? %>
+        <tr>
+          <td style="text-align: left;">
+            <%= fields_for :products_recommenders do |builder| %>
+              <%= builder.select :product_id, options_for_select(current_client.products.map{|product| [product.product_internal_name,product.id]}),{}, :style => "padding: 3px 0 3px 3px;" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left;">
+            <%= link_to_add_fields "Add more product recommendations", f, :products_recommenders  %>
+          </td>
+        </tr>
+      <% end %>
+      <% unless !@product.new_record? %>
+        <tr>
+          <td style="text-align: left;">
+            <%= f.fields_for :images do |builder| %>
+              <div class="image_fields" style="display :none; margin-top: 2px;">
+                <%= builder.file_field :image,:onchange=>"getFilename(this)", :style => "line-height: 10px"%>
+                <%= link_to "#", :id => "remove-new-upload-link", :style => "float: right; position: relative; top: 1px;" do %>
+                  <em style="text-decoration:underline;font-size:14px;"><%= "Remove" %></em>
+                <% end %>
+              </div>
+            <%end%>
+            <%= link_to "#", :id => "add-new-upload-link", :style => "float: right; position: relative; left: -57px; top: -28px;" do %>
+      <%#= image_tag "plus sign.png", :style => "position: relative; top: 6px;" %>
+              <%= "Upload more product images" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td style="color: #555555;text-align: left;font-size: 15px;font-family: Helvetica;">
+          <%= f.check_box :in_stock %> In stock
+        </td>
+      </tr>
+      <tr>
+        <td style="color: #555555;text-align: left;font-size: 15px;font-family: Helvetica;">
+          <%= f.check_box :allow_express_shopping %> Allow express processing for: <%= f.text_field :express_shipping_price, :placeholder => "$5", :style => "width: 100px;margin-top:5px;" %>
+        </td>
+        <td><%= validation_error(@product.errors["express_shipping_price"]) %></td>
+      </tr>
+    </table>
+    <h2>Call Settings</h2>
+    <table id="toll_free_options">
+      <tr>
+        <td> <%= f.text_field :voice_generated_message, :placeholder => "Voice generated message" %></td>
+      </tr>
+      <tr>
+        <td> <%= f.text_field :sms, :placeholder => "Message contained in the SMS",:maxlength => 80 %></td>
+      </tr>
+      <tr>
+        <td> <%= f.text_field :forward_call_number, :placeholder => "Forward call to this number" %></td>
+      </tr>
+      <tr>
+        <td style="color: #555555;text-align: left;font-size: 15px;font-family: Helvetica;"> <%= f.check_box :one_to_eight %> Generate Random toll free number </td>
+      </tr>
+      <tr>
+        <td style="color: #555555;text-align: left; padding: 10px;padding-left: 100px;font-size: 15px;font-family: Helvetica;">or</td>
+      </tr>
+      <tr>
+        <td style="color: #555555;text-align: left;font-size: 15px;font-family: Helvetica;">Search by<%= f.text_field :area_code, :placeholder => "Area code", :style => "width: 100px;margin-top:5px;" %>  and/or  <%= f.text_field :matching, :placeholder => "maching characters", :style => "width: 150px;margin-top:5px;" %></td>
+      </tr>
+      <tr>
+        <td>
+          <em style="float: left; margin: -10px 0 0 70px;">only numbers allowed</em>
+          <em style="float: left; margin: -9px 1px 0px 70px;">FOR Example:"JENNY"</em>
+          <br/><em style="float: left; margin: -10px 0 0 60px;"><%= validation_error(@product.errors["area_code"]) %></em>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.submit "Save and Create", :class => "btn btn-custom" %></td>
+      </tr>
+    </table>
+  </div>
+
+<% end %>
+<%= javascript_tag do %>
+  jQuery("#add-new-upload-link").click(function(event){
+  event.preventDefault();
+  jQuery(".image_fields:hidden").first().show();
+  jQuery(this).css("right","-227px");
+  jQuery(".image_fields:visible a").last().show();
+  if(jQuery(".image_fields:hidden").length == 0) {
+  jQuery(this).hide();
+  }
+
+  });
+  jQuery("#add-new-upload-link").trigger("click");
+
+  jQuery(".image_fields a").click(function(event){
+  event.preventDefault();
+  jQuery(this).closest("div").hide().find("input").val("");
+  if(jQuery(".image_fields:visible").length == 1) {
+  jQuery("#add-new-upload-link").show();
+  }
+  });
+
+  $('#product_create').addClass('animated fadeInLeftBig');
+
+  function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+  }
+
+  function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+  if($(link).closest(".fields").length == '5'){
+  return false;
+  }
+  //    $('.fields input[type=file]').customFileInput();
+  }
+
+  $(function () {
+  var shippingHandling = $('input:text[id$=product_shipping_and_handling]').keyup(foo);
+  var productCost = $('input:text[id$=product_product_cost]').keyup(foo);
+
+  function foo() {
+  var shippingHandling_value = shippingHandling.val();
+  var productCost_value = productCost.val();
+  var sum = add(shippingHandling_value, productCost_value);
+  $('input:text[id$=product_unit_price]').val(sum);
+  }
+
+  function add() {
+  var sum = 0;
+  for (var i = 0, j = arguments.length; i < j; i++) {
+  if (IsNumeric(arguments[i])) {
+  sum += parseFloat(arguments[i]);
+  }
+  }
+  return sum;
+  }
+
+  function IsNumeric(input) {
+  return (input - 0) == input && input.length > 0;
+  }
+  });
+<% end %>

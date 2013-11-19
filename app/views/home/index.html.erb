@@ -1,0 +1,52 @@
+<div id="outside" style="background: url(http://i.imgur.com/mmGBNN0.png); min-height: 1200px;">
+<div class="container">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a href="/"><img src="/assets/the_hundo_new.png" height="25px" style="position: absolute;top: 50%;left: 50%;width: 200px;height: 38px;margin-top: -21px; /* Half the height */margin-left: -100px; vertical-align: middle;text-align: center;"/></a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <% if !signed_in? %>
+          <% else %>
+            <!--<li><%= image_tag(current_client.avatar.url(:thumb), :width => "50", :height => "30") %></li>-->
+            <% if current_client %>
+              <li>
+                <%= link_to  current_client.name, "/" %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+        <ul class="nav pull-right">
+          <li>
+            <% if signed_in? %>
+              <%= link_to "Logout", destroy_client_session_path, :method => "DELETE" %>
+            <% end %>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+  <div class="nav_container">
+    <ul id="nav">
+      <li id="create"><%= link_to "Create", new_product_path, :remote => true, :id => "create" %></li>
+      <li id="dashboard"><%= link_to "Dashboard", "/", :id => "userdash", :class => "active" %></li>
+      <li id="edit"><%= link_to "Edit", products_path, :remote => true, :id => "edit" %></li>
+    </ul>
+  </div>
+</div>
+<div id="home_view" style="width: 100%;">
+  <div id="chang_middle" style="width: 100%;">
+    <%= render :partial => "/users/user_details" %>
+  </div>
+</div>
+</div>
+</div>
+
+<%= javascript_tag do %>
+  $('#home_view').addClass('animated fadeInDownBig');
+<% end %>
+
+<%= javascript_tag do %>
+  $(".alert").delay(0000).fadeOut(100);
+
+<% end %>

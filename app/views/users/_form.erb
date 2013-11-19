@@ -1,0 +1,194 @@
+<%= form_for @user ||= User.new, url: users_path, html: {autocomplete: 'off', id: 'new-user'} do |f| %>
+
+  <%= render 'shared/errors', object: @user %>
+
+  <h2>Enter your payment info:</h2>
+
+  <div id="credit-card" class="credit-card">
+    <div style="padding-left: 3px; padding-top: 20px;">
+      <div id="credit-card-errors">
+        <%= @user.errors[:stripe_credit_card].first if @user.errors.include?(:stripe_credit_card) %>
+      </div>
+
+      <div class="form-row clearfix">
+        <div class="form-col one">
+          <%= f.text_field :credit_card_number, placeholder: '0000 0000 0000 0000', :style=>"width: 280px;" %>
+          <%= f.hidden_field :stripe_credit_card_token %>
+          <%= hidden_field_tag :product_id, @product.id %>
+        </div>
+      </div>
+
+      <div class="form-row clearfix">
+        <div class="form-col left half labeled">
+          <%= f.label :credit_card_expiration do %>
+            <%= raw 'GOOD<br/>THRU' %>
+          <% end %>
+          <%= f.text_field :credit_card_expiration, placeholder: 'MM/YY' %>
+        </div>
+        <div class="form-col left half labeled">
+          <%= f.label :credit_card_cvv do %>
+            <%= raw 'CVV<br/>CODE' %>
+          <% end %>
+          <%= f.text_field :credit_card_cvv, placeholder: '000' %>
+        </div>
+      </div>
+
+      <div class="form-row clearfix">
+        <div class="form-col one">
+          <%= f.text_field :credit_card_name, placeholder: 'ENTER NAME', :style=>"width: 280px;" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="shipping-info">
+    <h2>Shipping Info</h2>
+
+    <div class="form-row clearfix">
+      <div class="form-col one">
+        <%= f.text_field :shipping_name, placeholder: 'Name', :style=>"width: 280px;" %>
+      </div>
+    </div>
+
+    <div class="form-row clearfix">
+      <div class="form-col one">
+        <%= f.text_field :shipping_address, placeholder: 'Address', :style=>"width: 280px;" %>
+      </div>
+    </div>
+
+    <div class="form-row clearfix">
+      <div class="form-col left medium">
+        <%= f.text_field :shipping_country, placeholder: 'State', :style=>"width: 280px;" %>
+      </div>
+      <div class="form-col right small">
+        <%= f.text_field :shipping_zip, placeholder: 'Zip', :style=>"width:90px;"%>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="is_billing_info">
+    <%= f.check_box(:is_billing_info) %>
+    <%= f.label :is_billing_info, :id => "billing_info" do %>
+      <%= raw "Select this box if your billing address is different than your shipping info listed above." %>
+    <% end %>
+  </div>
+
+
+  <div id="billing-info" style="<%= @user.is_billing_info ? '' : 'display: none;' %>">
+
+    <h2>Billing Info</h2>
+
+    <div class="form-row clearfix">
+      <div class="form-col one">
+        <%= f.text_field :billing_name, placeholder: 'Name', :style=>"width: 280px;" %>
+      </div>
+    </div>
+
+    <div class="form-row clearfix">
+      <div class="form-col one">
+        <%= f.text_field :billing_address, placeholder: 'Address', :style=>"width: 280px;" %>
+      </div>
+    </div>
+
+    <div class="form-row clearfix">
+      <div class="form-col left medium">
+        <%= f.text_field :billing_country, placeholder: 'State', :style=>"width: 280px;" %>
+      </div>
+      <div class="form-col right small">
+        <%= f.text_field :billing_zip, placeholder: 'Zip', :style=>"width:70px;"%>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="submit-order-area" class="center" style="padding-bottom: 30px;">
+    <%= f.submit 'Order Now' %>
+  </div>
+
+<% end %>
+
+<style>
+  input[type="text"], input[type="password"], input[type="password-conformation"], input[type="email"], textarea {
+    width: 300px;
+    box-shadow: none;
+  }
+  input[type="text"]:focus{
+    box-shadow: none;
+  }
+  html, body{
+    background: none repeat scroll 0 0 #FFFFFF;
+    width: 100%;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  .container {
+    text-align: left;
+  }
+  .container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+    width: 650px;
+    width: 100%;
+
+  }
+  label#billing_info{
+    width: 95%;
+  }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #fff;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #fff;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #fff;
+}
+</style>
+
+</div>
+
+<%= javascript_tag do %>
+$('input#user_credit_card_number').payment('formatCardNumber');
+$('input#user_credit_card_cvv').payment('formatCardCVC');
+<% end %>
+
+<%= javascript_tag do %>
+
+$(function() {
+    var intervalID = setInterval(function() {
+   $('.credit-card').toggleClass('wiggle');  
+    }, 1000);
+    setTimeout(function(){
+     // toggle back after 1 second
+     $('.credit-card').toggleClass('wiggle');  
+   },3000)
+    
+    setTimeout(function() {
+        clearInterval(intervalID);
+    }, 5000);
+});
+
+<% end %>
+
+<%= javascript_tag do %>
+setTimeout(function () {
+  window.scrollTo(0, 1);
+}, 1000);
+<% end %>
+
+<%= javascript_tag do %>
+$(document).ready(function() {
+    function pulsate() {
+        $("#pulsate").animate({ opacity: 0.2 }, 1200, 'linear')
+                     .animate({ opacity: 1 }, 1200, 'linear', pulsate)
+                     .click(function() {
+                         $(this).animate({ opacity: 1 }, 1200, 'linear');
+                         $(this).stop();
+                     });
+        }
+
+    pulsate();
+});
+<% end %>

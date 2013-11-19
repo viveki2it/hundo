@@ -1,0 +1,6 @@
+<tr class="fields">
+  <td>
+    <%= f.select :product_id, options_for_select(current_client.products.map{|product| [product.product_internal_name,product.id]}),{}, :style => "padding: 3px 0 3px 3px;" %>
+    <%= link_to_remove_fields "Remove", f %>
+  </td>
+</tr>

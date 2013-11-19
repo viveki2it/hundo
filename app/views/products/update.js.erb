@@ -1,0 +1,5 @@
+<% if @status %>
+$('#edit_product').html('<div style="color:green;">Product was successfully updated.</div>');
+<% else %>
+$('#edit_product').html('<%= escape_javascript(render(:partial => "form")) %>');
+<% end %>

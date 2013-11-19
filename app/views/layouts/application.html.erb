@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Eight Hundo | Direct mobile payment for Direct Response ads" %></title>
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    <%= favicon_link_tag 'favicon.ico', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    <%= yield :meta_tags %>
+    <%= stylesheet_link_tag "application" %>
+    <%= yield :stylesheets %>
+    <% if params[:controller] == "products" and params[:action] == "show" %>
+      <%= javascript_include_tag "application", "general.js", "payment.js" %>
+      <%= yield :javascripts %>
+    <% else %>
+      <%= javascript_include_tag "application", "home" %>
+      <%= yield :javascripts %>
+    <% end %>
+  </head>
+  <body>
+     <% if notice %>
+        <div class="alert alert-info" style="margin-top: 0px;">
+          <a class="close" data-dismiss="alert">×</a>
+          <!--<strong><%= notice %></strong>-->
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-error">
+          <a class="close" data-dismiss="alert">×</a>
+          <strong><%= alert %></strong>
+        </div>
+      <% end %>
+      <%= yield %>
+
+      <footer>
+      </footer>
+  </body>
+</html>

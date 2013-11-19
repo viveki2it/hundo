@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say>
+    <%= @product.voice_generated_message.to_s %>
+  </Say>
+  <Sms>
+    <%= @product.sms.to_s %> <%= "#{BASE_URL}/products/#{@product.id.to_s}" %>
+  </Sms>
+  <Dial>
+    <%= number_to_phone(@product.forward_call_number, :delimiter => "-")  %>
+  </Dial>
+</Response>
+

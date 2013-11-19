@@ -1,0 +1,164 @@
+/* Fix floats elements for all browsers */
+/* line 3, ../../app/assets/stylesheets/screen.css.scss */
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+/* line 4, ../../app/assets/stylesheets/screen.css.scss */
+.clearfix {
+  display: inline-block;
+}
+
+/* line 5, ../../app/assets/stylesheets/screen.css.scss */
+.clearfix {
+  display: block;
+}
+
+html, body {
+  font: 12px/15px Arial sans-serif;
+  background: #ecf0f1;
+  color: #000;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+img {
+  max-width: 250px;
+}
+
+.btn-custom {
+  background-color: hsl(197, 90%, 48%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0caae8", endColorstr="#0caae8");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#0caae8), to(#0caae8));
+  background-image: -moz-linear-gradient(top, #0caae8, #0caae8);
+  background-image: -ms-linear-gradient(top, #0caae8, #0caae8);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0caae8), color-stop(100%, #0caae8));
+  background-image: -webkit-linear-gradient(top, #489cd6, #489cd6);
+  background-image: -o-linear-gradient(top, #0caae8, #0caae8);
+  background-image: linear-gradient(#0caae8, #0caae8);
+  border-color: #0caae8 #0caae8 hsl(197, 90%, 48%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+
+#product_create_details {
+  margin: 0 auto;
+}
+
+#toll_free_options {
+  margin: 0 auto;
+}
+
+.btn-custom:hover {
+   background-color: hsl(197, 90%, 78%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#94dcf9", endColorstr="#94dcf9");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#94dcf9), to(#94dcf9));
+  background-image: -moz-linear-gradient(top, #94dcf9, #94dcf9);
+  background-image: -ms-linear-gradient(top, #94dcf9, #94dcf9);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #94dcf9), color-stop(100%, #94dcf9));
+  background-image: -webkit-linear-gradient(top, #94dcf9, #94dcf9);
+  background-image: -o-linear-gradient(top, #94dcf9, #94dcf9);
+  background-image: linear-gradient(#94dcf9, #94dcf9);
+  border-color: #94dcf9 #94dcf9 hsl(197, 90%, 78%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.00);
+  -webkit-font-smoothing: antialiased;
+}
+
+body div.navbar.navbar-fixed-top div.navbar-inner {
+  background: #15212b;
+}
+.container {
+  text-align: center;
+}
+
+.container form.new_client_sign_in {
+  margin-top: 20%;
+}
+
+#content {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.full-content {
+  position: relative;
+}
+
+.content {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+}
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+a {
+  &:link, &:visited {
+    text-decoration: underline;
+    color: #c0cacb;
+    font-family: Helvetica;
+  }
+  &:hover, &:active {
+    text-decoration: underline;
+    color: #660066;
+    font-family: Helvetica;
+
+  }
+}
+
+#flash {
+  padding: 10px;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  color: #333;
+  margin: 0 0 15px 0;
+  &.notice {
+    background: #c1ffb5;
+  }
+}
+
+h1#errors {
+  font-size: 18px;
+  color: #000;
+  margin: 10px 0;
+  padding: 10px 8px;
+  border: 1px solid #ff1521;
+}
+
+h2 {
+  color: #a1a1a1;
+  font-size: 22px;
+  line-height: 24px;
+  margin: 25px 0 15px 0;
+  font-family: Helvetica;
+
+}
+
+input[type='text'],input[type='password'],input[type='password-conformation'],input[type='email'],textarea  {
+width:500px;
+}
+
+@media only screen and (max-device-width: 480px) {
+  html {
+    -webkit-text-size-adjust: none;
+  }
+}
+
+#error_explanation{
+color: red;
+}

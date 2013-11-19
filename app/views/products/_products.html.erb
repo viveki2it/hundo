@@ -1,0 +1,37 @@
+<div id="space" style="margin-top: 130px"></div>
+
+<% if !@products.nil? %>
+  <br/><table class="table table-bordered" style="background: #ecf0f1;">
+    <tr>
+      <th>Product ID</th>
+      <th>Toll Free Number</th>
+      <th>Internal Name</th>
+      <th>External Name</th>
+      <th>Unit Price</th>
+      <th></th>
+    </tr>
+    <% @products.each_with_index do |product, index| %>
+      <tr style="text-align: center">
+        <td><%= index+1 %></td>
+        <td><%= product.one_eight_hundred_number %></td>
+        <td><%= link_to  product.product_internal_name, product_details_product_path(product.id) %></td>
+        <td><%= product.product_external_name %></td>
+        <td><%= product.unit_price %></td>
+        <td><%= link_to "EDIT", edit_product_path(product.id), :remote => true %></td>
+      </tr>
+    <%end%>
+  </table>
+  <div id="edit_product">
+
+  </div>
+<% else %>
+  <div style="color:red;font-size: 15px;padding: 40px;">
+    You don't have products.
+
+    Please create products using this link.<%= link_to "New Product", new_product_path  %>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+  $('#edit_product').addClass('animated fadeInRightBig');
+<% end %>

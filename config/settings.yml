@@ -1,0 +1,5 @@
+stripe:
+  api_key: sk_test_JBBZjLTisTi7TztVLzwwXCG9
+  public_key: pk_test_IHlwoJxBASakLTNAwko5HkIu
+
+stripe_public_key:
